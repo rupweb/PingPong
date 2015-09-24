@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="EigerVertX" packages="">
+	<Appenders>
+		<RollingRandomAccessFile name="RollingRandomAccessFile" fileName="../logs/EigerVertxReceiver.log" filePattern="../logs/$${date:yyyy-MM}/api-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="25 MB"/>
+			</Policies>
+		</RollingRandomAccessFile>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} %m %ex%n</Pattern>
+			</PatternLayout>
+		</Console>
+		</Appenders>
+	<Loggers>
+		<Root level="trace">
+			<AppenderRef ref="RollingRandomAccessFile" level="trace"/>
+			<AppenderRef ref="Console" level="trace"/>
+		</Root>		
+	</Loggers>
+</Configuration>
