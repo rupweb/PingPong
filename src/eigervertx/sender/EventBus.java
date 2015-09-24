@@ -15,7 +15,7 @@ public class EventBus {
 		    
 		    io.vertx.core.eventbus.EventBus eventBus = vertx.eventBus();
 		    
-			vertx.deployVerticle(new EventBusSenderVerticle());
+			vertx.deployVerticle(new Sender());
 		    
 		    System.out.println("We now have a clustered event bus: " + eventBus);
 		  } else {
