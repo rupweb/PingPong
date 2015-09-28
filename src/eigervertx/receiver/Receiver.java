@@ -11,7 +11,7 @@ import io.vertx.core.json.JsonObject;
 
 public class Receiver extends AbstractVerticle {
 	
-	private static final Logger logger = LogManager.getLogger("Receiver");
+	private static final Logger logger = LogManager.getLogger("receiver");
 	public EventBus eB;
 
   public Receiver(EventBus eB) {

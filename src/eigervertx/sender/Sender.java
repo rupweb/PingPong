@@ -1,13 +1,24 @@
 package eigervertx.sender;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
+import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.json.JsonObject;
 
 public class Sender extends AbstractVerticle {
+	
+	private static final Logger logger = LogManager.getLogger("sender");
+	public EventBus eB;
 
-    public void start(Future<Void> startFuture) {
-        System.out.println("In Sender");
+    public Sender(EventBus eB) {
+		this.eB = eB;
+	}
+
+	public void start(Future<Void> startFuture) {
+        logger.info("In Sender");
         
         JsonObject j = new JsonObject();
               
@@ -18,10 +29,10 @@ public class Sender extends AbstractVerticle {
         j.put("settlementDate", "20150928");     
         j.put("currency", "EUR");
     	
-        System.out.println("Sending JSON");      
+        logger.info("Sending JSON: " + j.toString());      
         
         vertx.eventBus().publish("ui.quotes.request", j);
         
-        System.out.println("Sent JSON");
+        logger.info("Sent JSON");
     }
 }
