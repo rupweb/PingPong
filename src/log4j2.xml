@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="warn" name="EigerVertX" packages="">
 	<Appenders>
-		<RollingRandomAccessFile name="Receiver" fileName="../logs/Receiver.log" filePattern="../logs/$${date:yyyy-MM}/receiver-%d{MM-dd-yyyy}-%i.log.gz">
+		<RollingRandomAccessFile name="LogTrace" fileName="../logs/vertx.log" filePattern="../logs/$${date:yyyy-MM}/vertx-%d{MM-dd-yyyy}-%i.log.gz">
 			<PatternLayout>
 				<Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
 			</PatternLayout>
@@ -10,22 +10,10 @@
 				<SizeBasedTriggeringPolicy size="25 MB"/>
 			</Policies>
 		</RollingRandomAccessFile>
-		<RollingRandomAccessFile name="Sender" fileName="../logs/Sender.log" filePattern="../logs/$${date:yyyy-MM}/sender-%d{MM-dd-yyyy}-%i.log.gz">
-			<PatternLayout>
-				<Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
-			</PatternLayout>
-			<Policies>
-				<TimeBasedTriggeringPolicy />
-				<SizeBasedTriggeringPolicy size="25 MB"/>
-			</Policies>
-		</RollingRandomAccessFile>
-		</Appenders>
+	</Appenders>
 	<Loggers>
-	    <Logger name="receiver" level="trace">
-            <AppenderRef ref="Receiver" level="trace"/>   
-        </Logger>
-        <Logger name="sender" level="trace">
-            <AppenderRef ref="Sender" level="trace"/>   
-        </Logger>	
+		<Logger name="monitor" level="all">
+            <AppenderRef ref="LogTrace" level="trace"/>
+		</Logger>
 	</Loggers>
 </Configuration>

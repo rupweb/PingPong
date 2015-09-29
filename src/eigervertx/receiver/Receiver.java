@@ -23,8 +23,10 @@ public class Receiver extends AbstractVerticle {
       
 	MessageConsumer<JsonObject> rfq = eB.consumer("ui.quotes.request");
     MessageConsumer<JsonObject> quotes = eB.consumer("ui.quotes.response");
-	MessageConsumer<String> data = eB.consumer("ui.marketdata");
-
+	MessageConsumer<JsonObject> data = eB.consumer("ui.marketdata");
+	MessageConsumer<JsonObject> fix = eB.consumer("fix");
+	MessageConsumer<JsonObject> error = eB.consumer("error");
+	
 	rfq.handler(message -> {
 		logger.info("RFQ: " + message.body().toString());
 	});		
@@ -35,6 +37,14 @@ public class Receiver extends AbstractVerticle {
 	
 	data.handler(message -> {
 		logger.info("DATA: " + message.body().toString());
+	});	
+	
+	fix.handler(message -> {
+		logger.info("FIX: " + message.body().toString());
+	});	
+	
+	error.handler(message -> {
+		logger.info("ERROR: " + message.body().toString());
 	});	
   }
 }
