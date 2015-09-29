@@ -10,7 +10,7 @@ import io.vertx.core.json.JsonObject;
 
 public class Sender extends AbstractVerticle {
 	
-	private static final Logger logger = LogManager.getLogger("sender");
+	private static final Logger logger = LogManager.getLogger("monitor");
 	public EventBus eB;
 
     public Sender(EventBus eB) {

@@ -10,7 +10,7 @@ import io.vertx.core.eventbus.EventBus;
 
 public class VertxApp {
 	
-	private static final Logger logger = LogManager.getLogger("receiver");	
+	private static final Logger logger = LogManager.getLogger("monitor");	
 	public static EventBus eB;
 
 	public static void main(String[] args) {
