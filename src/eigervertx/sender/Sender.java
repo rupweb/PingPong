@@ -31,7 +31,7 @@ public class Sender extends AbstractVerticle {
     	
         logger.info("Sending JSON: " + j.toString());      
         
-        vertx.eventBus().publish("ui.quotes.request", j);
+        vertx.eventBus().publish("quotes.request", j);
         
         logger.info("Sent JSON");
         

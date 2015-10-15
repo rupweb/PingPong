@@ -1,5 +1,8 @@
 package eigervertx.receiver;
 
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -8,16 +11,18 @@ import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
 import io.vertx.core.eventbus.EventBus;
 
-public class VertxApp {
+public class ReceiverApp {
 	
 	private static final Logger logger = LogManager.getLogger("monitor");	
 	public static EventBus eB;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UnknownHostException {
 
 		logger.info("Starting receiver");
 		
-		VertxOptions options = new VertxOptions();
+		String ipAddress = Inet4Address.getLocalHost().getHostAddress();
+        VertxOptions options = new VertxOptions();
+        options.setClusterHost(ipAddress);
 		
 		Vertx.clusteredVertx(options, res -> {
 		  if (res.succeeded()) {

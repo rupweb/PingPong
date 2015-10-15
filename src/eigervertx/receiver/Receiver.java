@@ -21,9 +21,9 @@ public class Receiver extends AbstractVerticle {
   public void start(Future<Void> startFuture) throws Exception {
     logger.info("In start");
       
-	MessageConsumer<JsonObject> rfq = eB.consumer("ui.quotes.request");
-    MessageConsumer<JsonObject> quotes = eB.consumer("ui.quotes.response");
-	MessageConsumer<JsonObject> data = eB.consumer("ui.marketdata");
+	MessageConsumer<JsonObject> rfq = eB.consumer("quotes.request");
+    MessageConsumer<JsonObject> quotes = eB.consumer("quotes.response");
+	MessageConsumer<JsonObject> data = eB.consumer("marketdata");
 	MessageConsumer<JsonObject> fix = eB.consumer("fix");
 	MessageConsumer<JsonObject> error = eB.consumer("error");
 	
