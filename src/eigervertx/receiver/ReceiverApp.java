@@ -49,7 +49,7 @@ public class ReceiverApp {
 		
     	VertxOptions options = new VertxOptions();
     	Config hazelcastConfig = new Config();
-    	hazelcastConfig.getNetworkConfig().setPortAutoIncrement(false).setReuseAddress(true);
+    	hazelcastConfig.getNetworkConfig().setPortAutoIncrement(true);
     	hazelcastConfig.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
     	hazelcastConfig.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(true);
     	options.setClusterManager(new HazelcastClusterManager(hazelcastConfig));
