@@ -23,6 +23,7 @@ public class ReceiverApp {
 		String ipAddress = Inet4Address.getLocalHost().getHostAddress();
         VertxOptions options = new VertxOptions();
         options.setClusterHost(ipAddress);
+    	options.setClustered(true);
 		
 		Vertx.clusteredVertx(options, res -> {
 		  if (res.succeeded()) {
