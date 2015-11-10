@@ -50,10 +50,10 @@ public class ReceiverApp {
     	VertxOptions options = new VertxOptions();
     	Config hazelcastConfig = new Config();
     	hazelcastConfig.getNetworkConfig().setPortAutoIncrement(true);
-    	hazelcastConfig.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
-    	hazelcastConfig.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(true);
+    	hazelcastConfig.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(true);
+    	hazelcastConfig.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(false);
     	options.setClusterManager(new HazelcastClusterManager(hazelcastConfig));
-    	options.setClusterHost(ipAddress);	
+    	options.setClusterHost(ipAddress);
     	
     	logger.info("ipAddress: " + ipAddress.toString());
     	logger.info("options: " + options.toString());
