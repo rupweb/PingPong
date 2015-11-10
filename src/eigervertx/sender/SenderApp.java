@@ -64,7 +64,13 @@ public class SenderApp {
 		    
 		    eB = vertx.eventBus();
 		    
-		    logger.info("Deploying Sender verticle");
+		    logger.info("Deploying Sender verticle in 10 seconds...");
+		    
+		    try {
+				Thread.sleep(10000);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		    
 			vertx.deployVerticle((Verticle) new Sender(eB));	
 		  } else {
