@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="warn" name="EigerVertX" packages="">
+<Configuration status="warn" name="EigerTest" packages="">
 	<Appenders>
-		<RollingRandomAccessFile name="LogTrace" fileName="../logs/vertx.log" filePattern="../logs/$${date:yyyy-MM}/vertx-%d{MM-dd-yyyy}-%i.log.gz">
+		<RollingRandomAccessFile name="LogTrace" fileName="../logs/SendReceive.log" filePattern="../logs/$${date:yyyy-MM}/SendReceive-%d{MM-dd-yyyy}-%i.log.gz">
 			<PatternLayout>
 				<Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
 			</PatternLayout>
