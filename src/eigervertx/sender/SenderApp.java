@@ -1,7 +1,11 @@
 package eigervertx.sender;
 
 import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.Enumeration;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,11 +23,30 @@ public class SenderApp {
 	private static final Logger logger = LogManager.getLogger("monitor");	
 	public static EventBus eB;
 	
-	public static void main(String[] args) throws UnknownHostException {
+	public static void main(String[] args) throws UnknownHostException, SocketException {
 		
 		logger.info("Starting sender");
 
-		String ipAddress = Inet4Address.getLocalHost().getHostAddress();	
+		String ipAddress = "";
+		if (System.getProperty("os.name").contains("Windows"))
+		{
+		  ipAddress = Inet4Address.getLocalHost().getHostAddress(); 
+		}
+		else
+		{
+		  // On Linux have to use NetworkInterface to find the network IP for the server
+		  Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces();
+		  while (en.hasMoreElements()) {
+		    NetworkInterface ni= (NetworkInterface) en.nextElement();
+		    Enumeration<InetAddress> ee = ni.getInetAddresses();
+		    while (ee.hasMoreElements()) {
+		      InetAddress ia= (InetAddress) ee.nextElement();
+		      if (ia.getHostAddress().contains("192"))
+		    	ipAddress = ia.getHostAddress();
+		    }
+		  }
+		}
+		
     	VertxOptions options = new VertxOptions();
     	Config hazelcastConfig = new Config();
     	hazelcastConfig.getNetworkConfig().setPortAutoIncrement(false).setReuseAddress(true);
