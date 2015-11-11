@@ -54,6 +54,7 @@ public class ReceiverApp {
     	hazelcastConfig.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(false);
     	options.setClusterManager(new HazelcastClusterManager(hazelcastConfig));
     	options.setClusterHost(ipAddress);
+    	options.setHAEnabled(true);
     	
     	logger.info("ipAddress: " + ipAddress.toString());
     	logger.info("options: " + options.toString());

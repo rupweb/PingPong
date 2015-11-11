@@ -53,7 +53,8 @@ public class SenderApp {
     	hazelcastConfig.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(true);
     	hazelcastConfig.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(false);
     	options.setClusterManager(new HazelcastClusterManager(hazelcastConfig));
-    	options.setClusterHost(ipAddress);	
+    	options.setClusterHost(ipAddress);
+    	options.setHAEnabled(true);
     	
     	logger.info("ipAddress: " + ipAddress.toString());
     	logger.info("options: " + options.toString());
