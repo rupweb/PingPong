@@ -17,7 +17,7 @@ public class Sender extends AbstractVerticle {
 		this.eB = eB;
 	}
 
-	public void start(Future<Void> startFuture) {
+	public void start(Future<Void> startFuture) throws InterruptedException {
         logger.info("In Sender");
         
         JsonObject j = new JsonObject();
@@ -29,9 +29,13 @@ public class Sender extends AbstractVerticle {
         j.put("settlementDate", "20150928");     
         j.put("currency", "EUR");
     	
-        logger.info("Sending JSON: " + j.toString());      
+        logger.info("Sending JSON in 10 seconds: " + j.toString());      
         
-        eB.publish("quotes.request", j);
+        Thread.sleep(10000);
+        
+        logger.info("Sending now");
+        
+        eB.publish("uat.isct.fundsin.response", j);
         
         logger.info("Sent JSON");
         

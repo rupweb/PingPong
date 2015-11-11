@@ -143,3 +143,5 @@
   <semaphore name="__vertx.*">
     <initial-permits>1</initial-permits>
   </semaphore>
+
+</hazelcast>
