@@ -1,4 +1,4 @@
-package eigervertx.receiver;
+package main.java.sender;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -18,15 +18,15 @@ import io.vertx.core.VertxOptions;
 import io.vertx.core.eventbus.EventBus;
 import io.vertx.spi.cluster.hazelcast.HazelcastClusterManager;
 
-public class ReceiverApp {
+public class SenderApp {
 	
 	private static final Logger logger = LogManager.getLogger("monitor");	
 	public static EventBus eB;
-
+	
 	public static void main(String[] args) throws UnknownHostException, SocketException {
-
-		logger.info("Starting receiver");
 		
+		logger.info("Starting sender");
+
 		String ipAddress = "";
 		if (System.getProperty("os.name").contains("Windows"))
 		{
@@ -48,23 +48,28 @@ public class ReceiverApp {
 		}
 		
 		VertxOptions options = new VertxOptions();
-		// options.setClusterHost(ipAddress);
-		options.setClustered(true);
+		options.setClusterHost(ipAddress);
     	
     	logger.info("ipAddress: " + ipAddress.toString());
     	logger.info("options: " + options.toString());
 		
 		Vertx.clusteredVertx(options, res -> {
 		  if (res.succeeded()) {
-		    Vertx vertx = res.result();	
+		    Vertx vertx = res.result();
 		    
 		    eB = vertx.eventBus();
-
-		    logger.info("Deploying Receiver verticle");
 		    
-			vertx.deployVerticle((Verticle) new Receiver(eB));		    
+		    logger.info("Deploying Sender verticle in 10 seconds...");
+		    
+		    try {
+				Thread.sleep(10000);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		    
+			vertx.deployVerticle((Verticle) new Sender(eB));	
 		  } else {
-			  logger.info("Failed: " + res.cause());
+		    System.out.println("Failed: " + res.cause());
 		  }
 		});
 	}

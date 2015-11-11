@@ -1,4 +1,4 @@
-package eigervertx.sender;
+package main.java.sender;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
