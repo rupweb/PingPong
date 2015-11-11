@@ -31,6 +31,13 @@ public class Receiver extends AbstractVerticle {
 	MessageConsumer<JsonObject> fundsinresponse = eB.consumer("uat.isct.fundsin.response");
 	MessageConsumer<JsonObject> fundsoutresponse = eB.consumer("uat.isct.fundsout.response");
 	
+    eB.consumer("ping-address", message -> {
+
+    	logger.info("Received message: " + message.body());
+        // Now send back reply
+        message.reply("pong!");
+      });
+	
 	rfq.handler(message -> {
 		logger.info("RFQ: " + message.body().toString());
 	});		

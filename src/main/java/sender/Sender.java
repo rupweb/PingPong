@@ -20,20 +20,18 @@ public class Sender extends AbstractVerticle {
 	public void start(Future<Void> startFuture) throws InterruptedException {
         logger.info("In Sender");
         
-        JsonObject j = new JsonObject();
-                  
+        JsonObject j = new JsonObject();                
         j.put("test", "this");
-    	
-        logger.info("Sending JSON in 10 seconds: " + j.toString());      
         
-        Thread.sleep(10000);
-        
-        logger.info("Sending now");
-        
-        eB.publish("uat.isct.fundsin.response", j);
-        
-        logger.info("Sent JSON");
-        
-        System.exit(0);
+        vertx.setPeriodic(1000, v -> {
+
+            eB.send("ping-address", "ping!", reply -> {
+              if (reply.succeeded()) {
+            	logger.info("Received reply " + reply.result().body());
+              } else {
+            	logger.info("No reply");
+              }
+            });  
+        });
     }
 }
