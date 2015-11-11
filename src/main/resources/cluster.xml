@@ -19,9 +19,7 @@
                 <multicast-port>54327</multicast-port>
             </multicast>
             <tcp-ip enabled="true">
-                <interface>192.168.20.39</interface>
                 <interface>192.168.20.61</interface>
-                <interface>192.168.25.8</interface>
             </tcp-ip>
         </join>
     </network>
