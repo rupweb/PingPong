@@ -48,16 +48,7 @@ public class ReceiverApp {
 		}
 		
 		VertxOptions options = new VertxOptions();
-		Config hazelcastConfig = new Config();
-		hazelcastConfig.getNetworkConfig().setPortAutoIncrement(true);
-		hazelcastConfig.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
-		hazelcastConfig.getNetworkConfig().getJoin().getTcpIpConfig().
-		addMember("192.168.20.61").addMember("192.168.20.39").
-		addMember("192.168.25.8").setRequiredMember(null).setEnabled(true);
-		hazelcastConfig.getNetworkConfig().getInterfaces().setEnabled(true).addInterface("192.168.20.*");
-		options.setClusterManager(new HazelcastClusterManager(hazelcastConfig));
 		options.setClusterHost(ipAddress);
-		options.setHAEnabled(true);
     	
     	logger.info("ipAddress: " + ipAddress.toString());
     	logger.info("options: " + options.toString());
