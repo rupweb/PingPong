@@ -10,13 +10,10 @@ import java.util.Enumeration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.hazelcast.config.Config;
-
 import io.vertx.core.Verticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
 import io.vertx.core.eventbus.EventBus;
-import io.vertx.spi.cluster.hazelcast.HazelcastClusterManager;
 
 public class ReceiverApp {
 	
@@ -48,7 +45,7 @@ public class ReceiverApp {
 		}
 		
 		VertxOptions options = new VertxOptions();
-		// options.setClusterHost(ipAddress);
+		options.setClusterHost(ipAddress);
 		options.setClustered(true);
     	
     	logger.info("ipAddress: " + ipAddress.toString());
