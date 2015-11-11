@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <exec.mainClass>eigervertx.receiver.ReceiverApp</exec.mainClass>
+    <exec.mainClass>main.java.receiver.ReceiverApp</exec.mainClass>
     <log4j.configuration>log4j2.xml</log4j.configuration>
   </properties>
   
