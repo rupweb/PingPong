@@ -57,7 +57,7 @@ public class ReceiverApp {
 		    
 		    eB = vertx.eventBus();
 
-		    logger.info("Deploying Receiver verticle");
+		    logger.info("Deploying Receiver verticle...");
 		    
 			vertx.deployVerticle((Verticle) new Receiver(eB));		    
 		  } else {
