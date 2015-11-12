@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="warn" name="EigerTest" packages="">
+<Configuration status="warn" name="PingPong" packages="">
 	<Appenders>
-		<RollingRandomAccessFile name="LogTrace" fileName="../logs/EigerTest.log" filePattern="../logs/$${date:yyyy-MM}/EigerTest-%d{MM-dd-yyyy}-%i.log.gz">
+		<RollingRandomAccessFile name="LogTrace" fileName="logs/PingPong.log" filePattern="logs/$${date:yyyy-MM}/PingPong-%d{MM-dd-yyyy}-%i.log.gz">
 			<PatternLayout>
 				<Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
 			</PatternLayout>
