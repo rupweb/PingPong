@@ -46,7 +46,7 @@ public class SenderApp {
 		
 		VertxOptions options = new VertxOptions();
 		options.setClusterHost(ipAddress);
-		// options.setClustered(true);
+		options.setClustered(true);
     	
     	logger.info("ipAddress: " + ipAddress.toString());
     	logger.info("options: " + options.toString());
